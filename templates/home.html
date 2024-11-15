@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Innovative Minds - Home</title>
+{% endblock title %}
+
+{% block home_active %}
+class="active"
+{% endblock home_active %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1>High-Quality Online Tech Training at an Affordable Price.</h1>
+            <h3>Acquire industry-relevant tech skills such as programming, software development, data science, cloud computing and more to become a world-class IT professional..</h3>
+            <a href="{{ url_for('studentform') }}"><button  class="btn btn-primary" type="button">Get Started</button></a>
+            
+        </div>
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/homepage.svg') }}" alt="">
+        </div>
+    </div>
+{% endblock content %}
