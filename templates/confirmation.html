@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Innovative Minds - Application Confirmation</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Thank you for applying!</h1>
+            <p>Your application has been received and we will review it shortly. We will be in touch if your application is a fit.</p>
+            <a href="{{ url_for('home') }}"><button  class="btn btn-primary" type="button">RETURN TO THE MAIN PAGE</button></a>
+            
+        </div>
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/homepage.svg') }}" alt="">
+        </div>
+    </div>
+{% endblock content %}
