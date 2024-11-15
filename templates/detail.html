@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Innovative Minds - {{ profile['FirstName'] }} {{ profile['LastName'] }}'s Profile</title>
+{% endblock title %}
+
+{% block content %}
+<main>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-2">
+                <div class="profile">
+                    <!-- Reference the student's image dynamically -->
+                    <img src="{{ url_for('static', filename='uploads/' + profile['Image']) }}" alt="Student Image">
+                    <h3>{{ profile['FirstName'] }} {{ profile['LastName'] }}</h3>
+                    <button>{{ profile['Admission_Status'] }}</button>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="personal-info">
+                    <p id="intro">Personal Information</p>
+                    <p class="content">Email: {{ profile['Email'] }}</p>
+                    <p class="content">Gender: {{ profile['Gender'] }}</p>
+                    <p class="content">Date Of Birth: {{ profile['DOB'] }}</p>
+                    <p class="content">Address: {{ profile['Address'] }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="other-info">
+                <p id="intro">Other Information</p>
+                <p id="content">State: {{ profile['State'] }}</p>
+                <p id="content">City: {{ profile['City'] }}</p>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="Academic-info">
+                <p id="intro">Academic Related Information</p>
+                <p id="content">Emergency Contact: {{ profile['Emergency_Contact'] }}</p>
+                <p id="content">GRE Score: {{ profile['Gre_Score'] }}</p>
+                <p id="content">Status: {{ profile['Admission_Status'] }}</p>
+                <form action="" class="status-form">
+                    <label for="">Change Status: </label>
+                    <select class="change-status" id="{{ profile['ID'] }}">
+                        <option value="">Change Status</option>
+                        <option value="undecided">Undecided</option>
+                        <option value="admitted">Admitted</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="course-info">
+                <p id="intro">Enrolled Courses</p>
+                {% if courses %}
+                    <ul>
+                        {% for course in courses %}
+                            <li>{{ course['course_name'] }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p id="content">No courses enrolled.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
