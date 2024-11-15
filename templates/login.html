@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Innovative Minds - Login</title>
+{% endblock title %}
+
+{% block login_active %}
+class="active"
+{% endblock login_active %}
+
+{% block content %}
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="form-group log-form">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group log-form">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div class="form-group log-form">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+{% endblock content %}
