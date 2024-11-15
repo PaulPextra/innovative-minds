@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Innovative Minds - Students Record</title>
+{% endblock title %}
+{% block dashboard_active %}
+class="active"
+{% endblock dashboard_active %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <p id="info"><span>Info!</span> All students record table.</p>
+            <form action="javascript:0" id="search-form" method="POST">
+                <div class="form-group">
+                    <input type="text" id="search-name" name="search-name" placeholder="Search Search Records By Name Only">
+                    <select name="search-status" id="search-status">
+                        <option value="">Select-Admission-Status</option>
+                        <option value="Undecided">Undecided</option>
+                        <option value="Admitted">Admitted</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <select name="search-gender" id="search-gender">
+                        <option value="">Select-Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <input type="text" id="search-grescore" name="search-gre-score" placeholder="Enter GRE Score">
+                    <input type="submit" id="search-btn" value="Search">
+                </div>
+            </form>
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <td>S/N</td>
+                            <td>Name</td>
+                            <td>Gender</td>
+                            <td>GRE Score</td>
+                            <td>Admission Status</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td class="student-name">{{ student['FirstName'] }} {{ student['LastName'] }}</td>
+                            <td class="student-gender">{{ student['Gender'] }}</td>
+                            <td class="student-gre-score">{{ student['Gre_Score'] }}</td>
+                            <td class="student-admission-status">{{ student['Admission_Status'] }}</td>
+                            <td class="action-icon"><a href="{{ url_for('student_profile', id=student['ID']) }}"><i class="bi bi-eye-fill"></i></a></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6">There is no student record at the moment, please try again later.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
