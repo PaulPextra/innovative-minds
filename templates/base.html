@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        {% block title %}{% endblock title %}
+    </head>
+    <body>
+      <input type="hidden" id="login-status" value="{{ 'true' if current_user.is_authenticated else 'false' }}">
+      
+      <!-- Modal section for Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="modal fade" id="flashModal" tabindex="-1" role="dialog" aria-labelledby="flashModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="flashModalLabel">Message</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body text-center flash-messages">
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                  {% endfor %}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Script to automatically show the modal when there are flash messages -->
+          <script type="text/javascript">
+            $(document).ready(function(){
+              $('#flashModal').modal('show');
+            });
+          </script>
+        {% endif %}
+      {% endwith %}
+      <!-- End of Modal section -->
+
+      <!-- Nav section -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand logo" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/IM.png') }}" alt="website logo"></a>
+              </div>
+              <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                  <li {% block home_active %}{% endblock home_active %}><a href="{{ url_for('home') }}">Home</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                  <li {% block services_active %}{% endblock services_active %}><a href="{{ url_for('services') }}">Micro-Degrees</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                  <li {% block dashboard_active %}{% endblock dashboard_active %}><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="logout-btn">
+                  <li {% block logout_active %}{% endblock logout_active %}><a href="{{ url_for('logout') }}" onclick="return confirm('Are you sure you want to log out?');">Logout</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="login-btn">
+                  <li {% block login_active %}{% endblock login_active %}><a href="{{ url_for('login') }}">Login</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" id="signup-btn">
+                  <li {% block signup_active %}{% endblock signup_active %}><a href="{{ url_for('signup') }}">Signup</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li {% block get_started_active %}{% endblock get_started_active %}><a href="{{ url_for('studentform') }}">Get Started</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+      <!-- End of Nav section -->
+
+      <!-- Content Section -->
+        <div class="container-fluid">
+          {% block content %}{% endblock content %}
+        </div>
+      <!-- End of Content Section -->
+
+      <!-- Footer Section -->
+        <footer class="footer">
+            <div class="container">
+              <p>&copy;Innovative Minds 2024. All Rights Reserved!</p>
+            </div>
+        </footer>
+      <!-- End of Footer Section -->
+    </body>
+</html>
