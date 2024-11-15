@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Innovative Minds - Micro-Degrees</title>
+{% endblock title %}
+
+{% block services_active %}
+class="active"
+{% endblock services_active %}
+
+{% block content %}
+    <section class="services">
+        <h1 style="text-align: center;">Micro-Degrees</h1>
+        <h4 style="text-align: center;">Every program is packed with high quality videos, engaging assignments, detailed code review and capstone project which are sure to take you from zero to world-class.</h4>
+        <div class="service-grid">
+          <div class="service-item">
+            <h2>Data Analysis And Visualization</h2>
+            <img src="{{ url_for('static', filename='images/Data_Analysis_And_Visualization.webp') }}" alt="Data Analysis And Visualization" width="250" height="166">
+            <p>Learn to collect, clean, and analyze data, and create visualizations using tools like Excel, Python, and Matplotlib. By course end, you'll transform data into insights for effective decision-making.</p>
+          </div>
+          <div class="service-item">
+            <h2>Data Science</h2>
+            <img src="{{ url_for('static', filename='images/Data-Science.jpeg') }}" alt="Data Science" width="250" height="166">
+            <p>Learn core data science concepts, including data analysis and machine learning, using Python, SQL, and tools like Pandas and Scikit-learn. Solve real-world problems with data-driven solutions.</p>
+          </div>
+          <div class="service-item">
+            <h2>AWS Cloud Practitioner</h2>
+            <img src="{{ url_for('static', filename='images/AWS-Cloud-Practitioner.webp')}}" alt="AWS Cloud Practitioner" width="250" height="166">
+            <p>Learn the basics of AWS services, cloud concepts, and pricing models to prepare for the AWS Cloud Practitioner certification and understand cloud solutions for business needs.</p>
+          </div>
+          <div class="service-item">
+            <h2>Fullstack Python Developer</h2>
+            <img src="{{ url_for('static', filename='images/Fullstack-Python-Developer.png')}}" alt="AWS Cloud Practitioner" width="250" height="166">
+            <p>Learn to build full web applications with Python, using frameworks like Flask or Django, and integrate frontend technologies, databases, and APIs.</p>
+          </div>
+        </div>
+    </section>
+    <section class="additional-services">
+        <div class="service-grid">
+          <div class="service-item">
+            <h2>Introduction To Programming</h2>
+            <img src="{{ url_for('static', filename='images/Introduction-To-Programming.jpeg')}}" alt="Introduction To Programming" width="250" height="166">
+            <p>Learn basic coding concepts like variables, loops, and functions using languages like Python or Java, preparing you for advanced programming.</p>
+          </div>
+          <div class="service-item">
+            <h2>Backend Python Developer</h2>
+            <img src="{{ url_for('static', filename='images/Backend-Python-Developer.png')}}" alt="Backend Python Developer" width="250" height="166">
+            <p>Learn to build robust server-side applications using Python. This course covers databases, APIs, and frameworks like Django or Flask to develop efficient and scalable backend systems.</p>
+          </div>
+          <div class="service-item">
+            <h2>Frontend Developer</h2>
+            <img src="{{ url_for('static', filename='images/Frontend-Developer.jpg')}}" alt="Frontend Developer" width="250" height="166">
+            <p>Learn to create interactive and responsive web interfaces using HTML, CSS, and JavaScript. This course covers key frameworks like React or Angular to build dynamic, user-friendly websites and applications.</p>
+          </div>
+          <div class="service-item">
+            <h2>Fullstack PHP Developer</h2>
+            <img src="{{ url_for('static', filename='images/Fullstack-PHP-Developer.webp')}}" alt="Fullstack PHP Developer" width="250" height="166">
+            <p>Learn to build complete web applications using PHP for backend development, along with HTML, CSS, JavaScript, and MySQL for frontend and database integration. This course covers full-stack development, from server-side logic to user interface design.</p>
+          </div>
+        </div>
+    </section>
+{% endblock content %}
