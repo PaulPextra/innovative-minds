@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Innovative Minds - Registration Portal</title>
+{% endblock title %}
+
+{% block get_started_active %}
+    class="active"
+{% endblock get_started_active %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12 student-form">
+        <form action="/portal/students/form" id="student-form" method="POST" enctype="multipart/form-data">
+            <h2>Student Form</h2>
+            <p>Please fill in all required information</p>
+            <h3>Personal Information</h3>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="">Upload image:</label>
+                        <input 
+                            type="file" 
+                            class="form-control" 
+                            name="image"
+                            id="image"
+                            accept="image/*" 
+                            required
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="">FirstName</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="firstName"
+                            id="firstName" 
+                            placeholder="Enter FirstName"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="">LastName</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="lastName"
+                            id="lastName" 
+                            placeholder="Enter LastName"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Date of Birth</label>
+                        <input 
+                            type="date" 
+                            class="form-control" 
+                            name="dob"
+                            id="dob"
+                            min="1900-01-01"
+                            placeholder="mm/dd/yy"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            class="form-control" 
+                            name="phone"
+                            id="phone" 
+                            placeholder="Enter PhoneNumber"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="state">State</label>
+                        <select name="state" id="state" class="form-control" onchange="populate(this.id, 'city')">
+                            <option value="">Select-State</option>
+                            <option value="California">California</option>
+                            <option value="Texas">Texas</option>
+                            <option value="Florida">Florida</option>
+                            <option value="New York">New York</option>
+                            <option value="Illinois">Illinois</option>
+                            <option value="Pennsylvania">Pennsylvania</option>
+                            <option value="Ohio">Ohio</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="North Carolina">North Carolina</option>
+                            <option value="Michigan">Michigan</option>
+                            <option value="New Jersey">New Jersey</option>
+                            <option value="Virginia">Virginia</option>
+                            <option value="Washington">Washington</option>
+                            <option value="Arizona">Arizona</option>
+                            <option value="Massachusetts">Massachusetts</option>
+                            <option value="Tennessee">Tennessee</option>
+                            <option value="Indiana">Indiana</option>
+                            <option value="Missouri">Missouri</option>
+                            <option value="Maryland">Maryland</option>
+                            <option value="Wisconsin">Wisconsin</option>
+                            <option value="Colorado">Colorado</option>
+                            <option value="Minnesota">Minnesota</option>
+                            <option value="South Carolina">South Carolina</option>
+                            <option value="Alabama">Alabama</option>
+                            <option value="Louisiana">Louisiana</option>
+                            <option value="Kentucky">Kentucky</option>
+                            <option value="Oregon">Oregon</option>
+                            <option value="Oklahoma">Oklahoma</option>
+                            <option value="Connecticut">Connecticut</option>
+                            <option value="Iowa">Iowa</option>
+                            <option value="Utah">Utah</option>
+                            <option value="Nevada">Nevada</option>
+                            <option value="Arkansas">Arkansas</option>
+                            <option value="Mississippi">Mississippi</option>
+                            <option value="Kansas">Kansas</option>
+                            <option value="New Mexico">New Mexico</option>
+                            <option value="Nebraska">Nebraska</option>
+                            <option value="West Virginia">West Virginia</option>
+                            <option value="Idaho">Idaho</option>
+                            <option value="Hawaii">Hawaii</option>
+                            <option value="Maine">Maine</option>
+                            <option value="New Hampshire">New Hampshire</option>
+                            <option value="Montana">Montana</option>
+                            <option value="Rhode Island">Rhode Island</option>
+                            <option value="Delaware">Delaware</option>
+                            <option value="South Dakota">South Dakota</option>
+                            <option value="North Dakota">North Dakota</option>
+                            <option value="Alaska">Alaska</option>
+                            <option value="Vermont">Vermont</option>
+                            <option value="Wyoming">Wyoming</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Emergency Contact</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="emergencyContact"
+                            id="emergencyContact" 
+                            placeholder="Enter The Name Of Emergency Contact"
+                            required
+                        >
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="">MiddleName</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="middleName"
+                            id="middleName" 
+                            placeholder="Enter MiddleName"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <input 
+                            type="email" 
+                            class="form-control" 
+                            name="email"
+                            id="email" 
+                            placeholder="Enter Email Address"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <div class="form-check">
+                            <label class="form-check-label">Male</label>
+                            <input type="radio" class="form-check-input" name="gender" value="Male" required>
+                            <label class="form-check-label">Female</label>
+                            <input type="radio" class="form-check-input" name="gender" value="Female" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Address</label>
+                        <textarea class="form-control" rows="4" name="address"id="address" placeholder="Enter Address" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">City</label>
+                        <select name="city" id="city" class="form-control">
+                            <option value="">Select-City</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <h3>Academic Related Information</h3>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="">GRE Score</label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="gre"
+                            id="gre" 
+                            placeholder="Enter GRE Score"
+                            min="0"
+                            max="400"
+                            required
+                        >
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Course Selection Field -->
+            <h3>Select Courses</h3>
+            <div class="form-group">
+                <label for="courses">Courses:</label>
+                <select name="courses[]" id="courses" class="form-control" multiple>
+                    <option value="1" {% if '1' in selected_courses %}selected{% endif %}>Data Analysis And Visualization</option>
+                    <option value="2" {% if '2' in selected_courses %}selected{% endif %}>Data Science</option>
+                    <option value="3" {% if '3' in selected_courses %}selected{% endif %}>AWS Cloud Practitioner</option>
+                    <option value="4" {% if '4' in selected_courses %}selected{% endif %}>Fullstack Python Developer</option>
+                    <option value="5" {% if '5' in selected_courses %}selected{% endif %}>Introduction To Programming</option>
+                    <option value="6" {% if '6' in selected_courses %}selected{% endif %}>Backend Python Developer</option>
+                    <option value="7" {% if '7' in selected_courses %}selected{% endif %}>Frontend Developer</option>
+                    <option value="8" {% if '8' in selected_courses %}selected{% endif %}>Fullstack PHP Developer</option>
+                </select>
+                <small>Select one or more courses (hold CTRL or CMD for multiple)</small>
+            </div>
+            
+            <button class="submit-btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
