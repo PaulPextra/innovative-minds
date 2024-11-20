@@ -20,7 +20,7 @@ psycopg2==2.9.9
 pycparser==2.22
 PyMySQL==1.0.2
 python-dotenv==1.0.0
-requests==2.27.1
+requests==2.32.2
 urllib3==1.26.9
 Werkzeug==2.2.3
 yarg==0.1.9
