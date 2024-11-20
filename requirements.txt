@@ -21,6 +21,6 @@ pycparser==2.22
 PyMySQL==1.0.2
 python-dotenv==1.0.0
 requests==2.27.1
-urllib3==1.26.9
+urllib3==1.26.19
 Werkzeug==2.2.3
 yarg==0.1.9
